@@ -2,14 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 
+const FileListItem = ({ file }) => (
+  <tr className="file-list-item" key={file.id}>
+    {file.id}
+    <td className="file-name">{file.name}</td>
+  </tr>
+);
+
 const FileList = ({ files }) => (
   <table className="file-list">
     <tbody>
       {files.map(file => (
-        <tr className="file-list-item" key={file.id}>
-          {file.id}
-          <td className="file-name">{file.name}</td>
-        </tr>
+        <FileListItem key={file.id} file={file} />
       ))}
     </tbody>
   </table>
@@ -47,6 +51,10 @@ const testFiles = [
 
 FileList.propTypes = {
   files: PropTypes.array
+};
+
+FileListItem.propTypes = {
+  file: PropTypes.object.isRequired
 };
 
 ReactDOM.render(
