@@ -12,7 +12,7 @@ const FileIcon = ({ file }) => {
 
   return (
     <td className="file-icon">
-      <i className={`fa-${icon}`} />
+      <i className={`fa ${icon}`} />
     </td>
   );
 };
