@@ -31,3 +31,9 @@
   padding-left: 10;
   overflow: hidden;
 }
+
+.age {
+  width: 125;
+  text-align: right;
+  padding-right: 4;
+}

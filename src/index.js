@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import "./index.css";
+import Time from "./Time";
 
 const FileIcon = ({ file }) => {
   let icon = "fa-file-text-o";
@@ -20,12 +21,15 @@ const FileListItem = ({ file }) => (
   <tr className="file-list-item">
     <FileName file={file} />
     <CommitMessage commit={file.latestCommit} />
+    <td className="age">
+      <Time time={file.updated_at} />
+    </td>
   </tr>
 );
 
-const CommitMessage = ({ commit }) => {
-  <td className="commit-message">{commit.message}</td>;
-};
+const CommitMessage = ({ commit }) => (
+  <td className="commit-message">{commit.message} </td>
+);
 
 FileListItem.propTypes = {
   file: PropTypes.object.isRequired
