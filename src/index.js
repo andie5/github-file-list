@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
+import "./index.css";
 
 const FileListItem = ({ file }) => (
   <tr className="file-list-item" key={file.id}>
