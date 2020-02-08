@@ -19,8 +19,13 @@ const FileIcon = ({ file }) => {
 const FileListItem = ({ file }) => (
   <tr className="file-list-item">
     <FileName file={file} />
+    <CommitMessage commit={file.latestCommit} />
   </tr>
 );
+
+const CommitMessage = ({ commit }) => {
+  <td className="commit-message">{commit.message}</td>;
+};
 
 FileListItem.propTypes = {
   file: PropTypes.object.isRequired
@@ -89,6 +94,10 @@ FileIcon.propTypes = {
 
 FileName.propTypes = {
   file: PropTypes.object.isRequired
+};
+
+CommitMessage.propTypes = {
+  commit: PropTypes.object.isRequired
 };
 
 ReactDOM.render(
