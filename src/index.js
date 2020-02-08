@@ -3,12 +3,28 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+const FileIcon = ({ file }) => {
+  let icon = "fa-file-text-o";
+  if (file.type === "folder") {
+    icon = "fa-folder";
+  }
+
+  return (
+    <td className="file-icon">
+      <i className={`fa-${icon}`} />
+    </td>
+  );
+};
+
 const FileListItem = ({ file }) => (
-  <tr className="file-list-item" key={file.id}>
-    {file.id}
-    <td className="file-name">{file.name}</td>
+  <tr className="file-list-item">
+    <FileName file={file} />
   </tr>
 );
+
+FileListItem.propTypes = {
+  file: PropTypes.object.isRequired
+};
 
 const FileList = ({ files }) => (
   <table className="file-list">
@@ -19,6 +35,15 @@ const FileList = ({ files }) => (
     </tbody>
   </table>
 );
+
+const FileName = ({ file }) => {
+  return (
+    <>
+      <FileIcon file={file} />
+      <td className="file-name">{file.name}</td>
+    </>
+  );
+};
 
 const testFiles = [
   {
@@ -55,6 +80,14 @@ FileList.propTypes = {
 };
 
 FileListItem.propTypes = {
+  file: PropTypes.object.isRequired
+};
+
+FileIcon.propTypes = {
+  file: PropTypes.object.isRequired
+};
+
+FileName.propTypes = {
   file: PropTypes.object.isRequired
 };
 
