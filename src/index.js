@@ -11,16 +11,22 @@ const FileIcon = ({ file }) => {
   }
 
   return (
-    <td className="file-icon">
+    <span className="file-icon">
       <i className={`fa ${icon}`} />
-    </td>
+    </span>
   );
 };
 
 const FileListItem = ({ file }) => (
   <tr className="file-list-item">
-    <FileName file={file} />
-    <CommitMessage commit={file.latestCommit} />
+    {/* <FileName file={file} /> */}
+    <td>
+      <FileIcon file={file} />
+    </td>
+    <td className="file-name">{file.name}</td>
+    <td>
+      <CommitMessage commit={file.latestCommit} />
+    </td>
     <td className="age">
       <Time time={file.updated_at} />
     </td>
@@ -28,7 +34,7 @@ const FileListItem = ({ file }) => (
 );
 
 const CommitMessage = ({ commit }) => (
-  <td className="commit-message">{commit.message} </td>
+  <span className="commit-message">{commit.message} </span>
 );
 
 FileListItem.propTypes = {
@@ -46,12 +52,7 @@ const FileList = ({ files }) => (
 );
 
 const FileName = ({ file }) => {
-  return (
-    <>
-      <FileIcon file={file} />
-      <td className="file-name">{file.name}</td>
-    </>
-  );
+  return <></>;
 };
 
 const testFiles = [
